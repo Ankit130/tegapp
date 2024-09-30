@@ -89,5 +89,3 @@ def search_interviews():
         'per_page': per_page
     })
 
-if __name__ == '__main__':
-    app.run(debug=True)
