@@ -7,7 +7,7 @@ app = Flask(__name__)
 # Load data from Excel file
 # Replace 'your_excel_file.xlsx' with the path to your actual Excel file
 from os.path import join
-fileName=join('data', 'your_excel_file.xlsx')
+fileName=join('api', 'your_excel_file.xlsx')
 df = pd.read_excel(fileName)
 df=df.fillna("")
 
