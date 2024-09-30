@@ -6,9 +6,7 @@ app = Flask(__name__)
 
 # Load data from Excel file
 # Replace 'your_excel_file.xlsx' with the path to your actual Excel file
-from os.path import join
-fileName=join('api', 'your_excel_file.xlsx')
-df = pd.read_excel(fileName)
+df = pd.read_excel('your_excel_file.xlsx')
 df=df.fillna("")
 
 # Convert date columns to datetime
