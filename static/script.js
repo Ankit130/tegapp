@@ -78,12 +78,12 @@ function displayPDF(url) {
         console.log("PDF loaded successfully. Total pages:", totalPages);
         
         // Render pages sequentially
-        let currentPage = 1;
+        let currentPage1 = 1;
         function renderNextPage() {
-            if (currentPage <= totalPages) {
-                console.log("Rendering page", currentPage);
-                renderPage(pdf, currentPage).then(() => {
-                    currentPage++;
+            if (currentPage1 <= totalPages) {
+                console.log("Rendering page", currentPage1);
+                renderPage(pdf, currentPage1).then(() => {
+                    currentPage1++;
                     renderNextPage();
                 });
             } else {
@@ -184,8 +184,8 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.focus();
 
     // Pagination buttons
-    document.getElementById('prevPage').addEventListener('click', () => changePage(-1));
-    document.getElementById('nextPage').addEventListener('click', () => changePage(1));
+    //document.getElementById('prevPage').addEventListener('click', () => changePage(-1));
+    //document.getElementById('nextPage').addEventListener('click', () => changePage(1));
 
     // Sorting
     document.getElementById('sortBy').addEventListener('change', updateSort);
