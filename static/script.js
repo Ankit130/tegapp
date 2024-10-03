@@ -66,37 +66,12 @@ function truncateSummary(summary, maxLength) {
 
 function displayPDF(url) {
     const pdfContainer = document.getElementById('pdfContainer');
-    pdfContainer.innerHTML = '';  // Clear previous content
-    const pdfjsLib = window['pdfjs-dist/build/pdf'];
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
-    
-    console.log("Starting to load PDF from URL:", url);
+    pdfContainer.style.display = 'block';
+    url="https://drive.google.com/viewerng/viewer?embedded=true&url="+url
+    pdfContainer.setAttribute('src',url);
+    const pdfPlaceholder = document.getElementById('pdfPlaceholder');
+    pdfPlaceholder.style.display = 'none';
 
-    var loadingTask = pdfjsLib.getDocument(url);
-    loadingTask.promise.then(function(pdf) {
-        const totalPages = pdf.numPages;
-        console.log("PDF loaded successfully. Total pages:", totalPages);
-        
-        // Render pages sequentially
-        let currentPage1 = 1;
-        function renderNextPage() {
-            if (currentPage1 <= totalPages) {
-                console.log("Rendering page", currentPage1);
-                renderPage(pdf, currentPage1).then(() => {
-                    currentPage1++;
-                    renderNextPage();
-                });
-            } else {
-                console.log("All pages rendered");
-                const pdfPlaceholder = document.getElementById('pdfPlaceholder');
-                pdfPlaceholder.style.display = 'none';
-            }
-        }
-        
-        renderNextPage();
-    }).catch(function(error) {
-        console.error("Error loading PDF:", error);
-    });
 }
 
 function renderPage(pdf, pageNum) {

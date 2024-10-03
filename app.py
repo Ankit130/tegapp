@@ -13,11 +13,10 @@ df=df.fillna("")
 df['postDate'] = pd.to_datetime(df['postDate'])
 df['callDate'] = pd.to_datetime(df['callDate'])
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
-
-
 
 @app.route('/api/interviews')
 def get_interviews():
